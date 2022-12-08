@@ -1,0 +1,92 @@
+LEFT = Libraries.Robot.Lego libraray actions https://quorumlanguage.com/libraries.html
+RIGHT = lego spike hub library actions https://lego.github.io/MINDSTORMS-Robot-Inventor-hub-API/index.html
+Attempting to find what quorum actions possibly correspond to spike hub actions
+
+Battery
+Battery:GetCurrent() == hub.battery.current(), returns int
+Battery:GetVoltage() == hub.battery.voltage(), returns int
+
+Button
+Button:IsButtonPressed(text button) == hub.button.left.is_pressed || 
+                                       hub.button.right.is_pressed || 
+                                       hub.button.center.is_pressed
+Button:SetLightPattern(integer pattern) == ?
+Button:WaitForButtonPress() == ?
+
+Color Sensor
+colorSensor:GetColor() == ?
+colorSensor:GetLightColor() == ?
+colorSensor:GetLightLevel() == ?
+colorSensor:GetRedGreenBlueLevels() == ?
+colorSensor:GetReflectionLevel() == ?
+colorSensor:IsLightOn() == ?
+colorSensor:SetLightColor(integer color) == ?
+colorSensor:SetLightOn(boolean value) == ?
+colorSensor:SetPort(integer portNumber) == ?
+
+Gyro Sensor
+gyro:GetRotation() == ?
+gyro:GetRotationSpeed() == hub.motion.gyroscope(filtered=False) → Tuple[int, int, int], returns angular velocity in degrees per second
+gyro:Reset() == ?
+gyro:SetPort(integer portNumber) == ?
+
+Infrared Sensor
+
+Motor
+--motor:GetRotation(text motorID) == <motorObject>.mode.get() after setting <motorObject>.mode([(3, 0)])
+motor:GetRotationTarget(text motorID) == ?
+--motor:GetSpeed(text motorID) == <motorObject>.mode.get() after setting <motorObject>.mode([(3, 0)])
+--motor:IsMoving(text motorID) == motor.busy(BUSY_MOTOR)
+--motor:ResetRotation(text motorID) == motor.preset(0)
+--motor:RotateBackward(text motorID) == motor.run_at_speed(-50)
+--motor:RotateByDegrees(text motorID, number degrees) == motor.run_for_degrees(int(data[iter]))
+--motor:RotateForward(text motorID) == motor.run_at_speed(50)
+--motor:RotateToDegree(text motorID, number degreeTarget) == motor.run_for_degrees(int(data[iter])), hard to diff between RotateByDegrees
+--motor:SetSpeed(text motorID, integer speed) == motor.default(spd, 100, 0, 0, STOP_HOLD, (1,1,1), True, None)
+--motor:Stop(text motorID) == motor.hold()
+--motor:Wait(text motorID) == motor.hold(), no available hub function fits this Quorum command
+                                               <motorObject>.run_at_speed(speed: init), returns None || 
+                                               <motorObject>.run_at_speed(speed: int, max_power: int, acceleration: int, deceleration: int, stall: bool), returns None ||
+                                               <motorObject>.run_for_time(msec: int), returns None ||
+                                               <motorObject>.run_for_time(msec: int, speed: int, max_power: int, stop: int, acceleration: int, deceleration: int, stall: bool), returns None ||
+                                               <motorObject>.run_for_degrees(degrees: int), returns None ||
+                                               <motorObject>.run_for_degrees(degrees: int, speed: int, max_power: int, stop: int, acceleration: int, deceleration: int, stall: bool), returns None ||
+
+Screen/Display (a lot of irrelevant commands due to prime hub utilizing 25 led's instead of a screen)
+screen:Clear() == hub.display.clear()
+? == hub.display.rotation(rotation:int), returns None
+? == hub.display.align(), returrns int
+? == hub.display.align(face: int), returns int
+? == hub.display.invert(), returns bool
+? == hub.display.invert(invert: bool), returns bool
+? == hub.display.callback(self, function: Callable[[int], None]), returns None
+? == hub.display.pixel(x: int, y: int), returns int
+? == hub.display.pixel(x: int, y: int, brightness: int), returns None
+? == hub.display.show(image: hub.Image), returns None
+? == hub.display.show(image: Iterable[hub.Image], delay=400, clear=False, wait=True, loop=False, fade=0), returns None
+screen:ScrollUp(integer lines) == hub.Image.shift_up(n: int), returns hub.Image
+screen:ScrollUp() == hub.Image.shift_up(1), returns hub.Image
+
+Sound
+sound:SetVolume() == hub.sound.volume(volume: int), returns None                  
+sound:GetVolume() == hub.sound.volume(), returns int
+sound:Beep() == hub.sound.beep(freq, time, waveform), returns None
+sound:BeepSequenceDown() == ?
+sound:BeepSequenceUp() == ?
+sound:BeepTwice() == ?
+sound:Buzz() == ?
+sound:PlayAudio(Libraries.System.File audioFile) || Sound:PlayAudio(text audioFile) == hub.sound.play(filename: str, rate=16000), returns None
+sound:PlayTone (integer frequency, integer duration) == hub.sound.beep(freq, time, waveform), returns None
+? == hub.sound.callback(self, function: Callable[[int], None]), returns None
+
+Touch Sensor
+touchSensor:IsPressed() == ?
+touchSensor:SetPort(integer portNumbe) == ?
+
+Ultrasonic Sensor
+ultrasonicSensor:GetDistance() == ?
+ultrasonicSensor:GetHashCode() == ?
+ultrasonicSensor:SetPort(integer portNumber) == ?
+
+
+

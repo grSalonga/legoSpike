@@ -1,0 +1,130 @@
+This is a list of all the Quorum commands along with their Lego counterpart.
+The link below is a list of offical Lego Spike programs and I am looking at the code there
+to make this list.
+https://education.lego.com/v3/assets/blt293eea581807678a/blt02bcbffa2bf460b5/5f20680fced9a13cf5b60c01/EN-US-SPIKE-Prime-Python-Programs.pdf
+I called Lego, they do not have an offical documentation for the spike.
+
+*****************************************************************************
+*     Commands that have a 1-1 command between Lego and Quorum               *
+*****************************************************************************
+
+
+Checklist of Quorum motor commands
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ 
++  X Wait(text motorID)                                        +
++  O Stop(text motorID)                                        +
++  O SetSpeed(text motorID, integer speed)                     +
++  O RotateToDegree(text motorID, number degreeTarget)         +
++  X RotateForward(text motorID)                               +
++  O RotateByDegrees(text motorID, number degrees)             +
++  X RotateBackward(text motorID)                              +
++  X ResetRotation(text motorID)                               + 
++  X IsMoving(text motorID)                                    +
++  X GetSpeed(text motorID)                                    +
++  X GetRotationTarget(text motorID)                           +
++  X GetRotation(text motorID)                                 +
++  X GetHashCode()                                             +
++  X Equals(Libraries.Language.Object object)                  +
++  X Compare(Libraries.Language.Object object)                 +
++                                                              +
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+
+
+
+Make a specified motor stop
+---------------------------------------------------------------------------------
+Quorum: 
+    Stop(text motorID)
+
+Lego: 
+    motor.stop()
+
+In Quorum, Stop(text motorID) will have the argument motor stop.
+In Lego, stop() will cause the motor object to stop.
+
+Quorum example:
+    motor:Stop(motor:MOTOR_A)
+
+Lego example: 
+    MOTOR_A.stop()
+---------------------------------------------------------------------------------
+
+
+Set the speed of the motor
+---------------------------------------------------------------------------------
+Quorum: 
+    SetSpeed(text motorID, integer speed)
+
+Lego: 
+    motor.set_default_speed(int x)
+
+In Quorum, the first argument is the motor and the second argument is the speed for the motor.
+In Lego, the argument is the speed for the motor
+
+Quorum example:
+     motor:SetSpeed(motor:MOTOR_A, 100) 
+
+Lego example: 
+    MOTOR_A.set_default_speed(100)
+---------------------------------------------------------------------------------
+
+
+Rotates and runs the motor for a given number of degrees
+---------------------------------------------------------------------------------
+Quorum: 
+    RotateByDegrees(text motorID, number degrees)
+
+Lego: 
+    motor.run_for_degrees(int degrees, int speed)
+
+In Quorum, the first argument is the motor ID and the second argument is number of degrees to rotate.
+In Lego, the first argument is the number of degrees to rotate and the second argument
+
+Quorum example:
+     motor:RotateByDegrees(motor:MOTOR_A, 3600) 
+
+Lego example: 
+    MOTOR_A.run_for_degrees(90, 100)
+---------------------------------------------------------------------------------
+
+
+Rotates the motor to a specified degree
+---------------------------------------------------------------------------------
+Quorum: 
+    RotateToDegree(text motorID, number degreeTarget)
+
+Lego: 
+    motor.run_to_position(int degrees, text direction, int speed)
+
+In Quorum, the first argument is the motor ID and the second argument is degree wanted to rotate to.
+In Lego, the first argument is degree wanted to rotate to the second argument is the direction to rotate towards of "shortest path", "clockwise", or "counterclockwise",
+and the third argument is the speed for the motor
+
+Quorum example:
+     motor:RotateToDegree(motor:MOTOR_A, 360)
+
+Lego example: 
+    MOTOR_A.run_to_position(0, shortest path, 100)
+---------------------------------------------------------------------------------
+
+
+
+
+
+
+
+
+*****************************************************************************
+*     These are commands that seem to be new and do not exist in Quorum     *
+*****************************************************************************
+
+MotorPair
+---------------------------------------------------------------------------------
+Lego: 
+    motor MotorPair(motor x, motor y)
+
+This is a function that will take two motors as an input, and sync them so that 
+they move as one. It will return the the motor that will control both the arguments.
+---------------------------------------------------------------------------------
+
