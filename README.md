@@ -2,7 +2,7 @@
 ![Lego Spike](pictures/legoSpike.jpg)                
 (source: [Lego Spike Website](https://education.lego.com/en-us/products/lego-education-spike-prime-set/45678#spike%E2%84%A2-prime))
 
-This project is an attempt to successfully connect to the Lego Spike kit via Bluetooth and integrate it with the Quorum coding language to provide and implement accessibility features, primarily for blind and visually impaired users. The Quorum programming language has native support for the blind or visually impaired. Once the kit is connected and set up with the Quorum environment, blind and visually imparied users will be able to use screen readers to program the Lego Spike kit.
+This project is an attempt to successfully connect to the Lego Spike kit via Bluetooth and integrate it with the Quorum coding language to provide and implement accessibility features, primarily for blind and visually impaired users. The Quorum programming language has native support for the blind or visually impaired. Once the kit is connected and set up with the Quorum environment, blind and visually impaired users will be able to use screen readers to program the Lego Spike kit.
 
 [Quorum Website](https://quorumlanguage.com/)
 
